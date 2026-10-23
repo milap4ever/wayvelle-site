@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A trip for you · WayVelle</title>
+<meta name="description" content="Someone shared a trip with you on WayVelle.">
+<meta property="og:title" content="A trip for you on WayVelle">
+<meta property="og:description" content="Open it in WayVelle to make it yours.">
+<meta property="og:image" content="https://wayvelle.com/icon.png">
+<link rel="icon" href="/icon.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <img class="logo" src="/icon.png" alt="WayVelle">
+  <h1 id="title">WayVelle</h1>
+  <p class="soft" id="lead"></p>
+  <div class="card" id="trip" hidden>
+    <h2 id="name"></h2>
+    <div class="soft" id="facts"></div>
+  </div>
+  <div class="card" id="how" hidden>
+    <strong>Don't have WayVelle yet?</strong>
+    <ol>
+      <li>Get WayVelle <span class="soft">(coming soon to the App Store)</span>.</li>
+      <li>Open it, tap <b>+</b>, then <b>Enter Trip Code</b>.</li>
+      <li>Type this code:</li>
+    </ol>
+    <div class="code" id="code"></div>
+    <button class="btn ghost" id="copy">Copy Code</button>
+  </div>
+  <p id="missing" class="soft" hidden>This page doesn't exist. <a href="/" style="color:#fff">Go to WayVelle</a></p>
+</main>
+<script>
+// Links look like /t/K7QX9P2M (a copy of a trip) or /j/K7QX9P2M (an invite). With WayVelle installed, iOS opens the app
+// before this page loads; this page is for everyone else. The key below is Supabase's publishable key, the same one inside
+// the app: it is meant to be public, and it can only read a trip copy whose code you already have.
+const SUPABASE = "https://byqfwvaxpihmlcdczbld.supabase.co";
+const PUBLISHABLE_KEY = "sb_publishable_HwIXnOBmQHWwiF4TeatiOw_xuYOFAMt";
+const m = location.pathname.match(/^\/([tj])\/([0-9A-Za-z-]{8,12})\/?$/);
+const $ = (id) => document.getElementById(id);
+if (!m) {
+  $("missing").hidden = false;
+} else {
+  const kind = m[1], code = m[2].toUpperCase().replace(/[^0-9A-Z]/g, "");
+  const pretty = code.slice(0, 4) + "-" + code.slice(4);
+  $("code").textContent = pretty;
+  $("how").hidden = false;
+  $("copy").onclick = () => navigator.clipboard.writeText(pretty).then(() => { $("copy").textContent = "Copied"; });
+  if (kind === "j") {
+    $("title").textContent = "You're invited";
+    $("lead").textContent = "Someone invited you to plan and follow their trip with them on WayVelle.";
+  } else {
+    $("title").textContent = "A trip for you";
+    $("lead").textContent = "Someone shared their trip so you can make it yours, on your own dates.";
+    fetch(SUPABASE + "/rest/v1/rpc/get_trip_copy", {
+      method: "POST", headers: { apikey: PUBLISHABLE_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({ copy_code: code }),
+    }).then((r) => r.ok ? r.json() : null).then((t) => {
+      if (!t || typeof t !== "object") { $("lead").textContent = "This trip link isn't valid any more."; $("how").hidden = true; return; }
+      // Shared data is shown as text only, never as HTML.
+      $("name").textContent = String(t.name ?? "A trip");
+      const plans = Array.isArray(t.plans) ? t.plans.filter((p) => p && p.day > 0).length : 0;
+      const cities = Array.isArray(t.cities) ? t.cities.map((c) => c && c.name).filter(Boolean).join(" → ") : "";
+      $("facts").textContent = [`${Number(t.days) || 0} days`, `${plans} plans`, cities].filter(Boolean).join(" · ");
+      $("trip").hidden = false;
+    }).catch(() => {});
+  }
+}
+</script>
+</body>
+</html>
