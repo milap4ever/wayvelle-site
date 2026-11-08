@@ -49,18 +49,8 @@
   .disc { font-size: 13px; color: var(--soft); margin-top: 14px; }
   footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--soft); font-size: 14px; }
   footer .w { display: flex; gap: 22px; flex-wrap: wrap; }
-  /* the app's screens, drawn */
-  .phone { width: 260px; height: 530px; border-radius: 42px; background: #000; padding: 11px; box-shadow: 0 24px 60px #0009; flex: none; }
-  .scr { width: 100%; height: 100%; border-radius: 32px; background: #0b1430; overflow: hidden; padding: 38px 12px 12px; font-size: 12px; }
-  .scr .hd { font-weight: 700; font-size: 20px; margin: 0 2px 10px; }
-  .scr .ph { height: 104px; border-radius: 14px 14px 0 0; background: linear-gradient(165deg, #9cc6f2, #4b7fbf 50%, #2f5a3b 78%, #22412b); }
-  .scr .tile { background: #16264f; border-radius: 0 0 14px 14px; padding: 10px; margin-bottom: 10px; }
-  .scr .tag { display: inline-block; background: #f5a623; color: #000; font-weight: 700; border-radius: 5px; padding: 1px 6px; font-size: 10px; }
-  .scr .t1 { font-weight: 700; font-size: 15px; margin-top: 5px; }
-  .scr .row { background: #16264f; border-radius: 12px; padding: 10px; margin-bottom: 7px; display: flex; justify-content: space-between; gap: 8px; }
-  .scr .g { color: #44d07b; font-weight: 700; } .scr .s { color: #9fb0d8; }
-  .scr .slot { border: 1.5px dashed #ffffff4d; border-radius: 14px; padding: 12px; }
-  .scr .slot .pill { font-size: 11px; padding: 6px 11px; margin: 10px 6px 0 0; }
+  .phone { width: 270px; border-radius: 40px; background: #000; padding: 8px; box-shadow: 0 24px 60px #0009; flex: none; }
+  .phone img { display: block; width: 100%; height: auto; border-radius: 32px; }
   @media (max-width: 800px) {
     .hero, .hotel { flex-direction: column; align-items: flex-start; } .hero .phone, .hotel .phone { align-self: center; }
     .grid { grid-template-columns: 1fr; } h1 { font-size: 36px; } nav a:not(.keep) { display: none; } .hotel { padding: 22px; }
@@ -79,14 +69,7 @@
       <span class="badge">Coming soon to the App Store</span>
       <div class="small">For iPhone. Android is planned.</div>
     </div>
-    <div class="phone" role="img" aria-label="WayVelle home screen: the next trip, its flight and the next train"><div class="scr">
-      <div class="hd">Trips</div>
-      <div class="ph"></div>
-      <div class="tile"><span class="tag">In 5 days</span><div class="t1">Switzerland 2027</div><div class="s">Luzern → Interlaken · 10 days</div></div>
-      <div class="row"><span>Flight · YYZ → ZRH</span><span class="g">On time</span></div>
-      <div class="row"><span>IR 70 to Luzern · 09:32</span><span class="s">Pl. 7</span></div>
-      <div class="row"><span>Pilatus · cogwheel</span><span class="s">☀️ 6°</span></div>
-    </div></div>
+    <div class="phone"><img src="/shot-home.jpg" width="600" height="1300" alt="WayVelle home: the next trip with its flight home, and Forward your bookings"></div>
   </section>
 
   <section id="features">
@@ -110,17 +93,14 @@
         <span class="pill b">Booking.com</span><span class="pill e">Expedia</span>
         <div class="disc">WayVelle may earn a commission when you book through these links, at no extra cost to you.</div>
       </div>
-      <div class="phone" style="height:300px" role="img" aria-label="A night without a stay: Book a hotel in Luzern, with Booking.com and Expedia buttons"><div class="scr" style="padding-top:26px">
-        <div class="s" style="margin:0 2px 8px">Day 1 · Mon, Dec 1</div>
-        <div class="slot"><b>Book a hotel in Luzern · 2 nights</b><div class="s">Dec 1 – Dec 3 · 2 adults, 1 child</div>
-          <span class="pill b">Booking.com</span><span class="pill e">Expedia</span></div>
-      </div></div>
+      <div class="phone"><img src="/shot-day.jpg" width="600" height="1300" alt="A day in WayVelle: weather, check-out time, and Book a hotel in Grindelwald with Booking.com and Expedia buttons"></div>
     </div>
   </section>
 </div>
 <footer><div class="w">
   <span>© 2026 WayVelle</span><a href="/privacy.html">Privacy Policy</a><a href="mailto:support@wayvelle.com">support@wayvelle.com</a>
   <span>Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors</span>
+  <span>Photos in the app screenshots via <a href="https://commons.wikimedia.org">Wikimedia Commons</a>: chil (CC BY-SA 3.0); Abexus, Maria Feofilova, Martin Thurnherr, Jeremy Blatti, Lorenz Poffet (CC BY-SA 4.0); Alexis Lours (CC BY 4.0)</span>
 </div></footer>
 </body>
 </html>
