@@ -18,9 +18,9 @@
 <main>
   <a href="/"><img class="logo" src="/icon.png" alt="WayVelle home"></a>
   <h1>Privacy Policy</h1>
-  <p class="soft">Last updated October 23, 2026</p>
+  <p class="soft">Last updated November 20, 2026</p>
 
-  <p>WayVelle is a trip planner for travelling together. This page explains what we store, who can see it, and how to delete it. In short: we keep what's needed to plan and share your trips, we never sell it, show ads or track you across apps, and your Vault documents are encrypted so that even we can't open them.</p>
+  <p>WayVelle is a trip planner for travelling together. This page explains what we store, who can see it, and how to delete it. In short: we keep what's needed to plan and share your trips, we never sell it, show ads or track you across apps, and your Vault documents are encrypted so that even we can't open them. The rules for using WayVelle are in the <a href="/terms.html">Terms of Use</a>.</p>
 
   <h2>Your account</h2>
   <p>You can use WayVelle without an account; your trips then stay on your iPhone. If you sign in with Apple, we receive your name (the first time only) and an email address, which may be Apple's private relay address. We use them to sign you in and to show members who changed a plan.</p>
@@ -28,6 +28,27 @@
   <h2>Your trips</h2>
   <p>When you're signed in, your trips, plans, stays, times, notes and the travellers you add are stored on our servers (Supabase, in Frankfurt, Germany) so they sync between devices and with the people you invite. Members of a trip see that trip; nobody else does. Trips you delete wait in Deleted Trips for 7 days, then are removed.</p>
   <p>Files you attach to plans (tickets, confirmations) are stored with the trip and can be opened by its members.</p>
+  <p>For travellers you can add an age, access needs and food allergies, so plans fit them. This is optional, and members of the trip can see it. Booking details you enter (a confirmation number, the last four digits of a card) and expenses are stored with the trip; booking details marked "Only you can see" stay private to you.</p>
+
+  <h2>Home and everyday</h2>
+  <p>Places you save (Home, Work), your commute and your preferences (food, what you like, what to leave out) are stored in your account so they follow you between devices. Only you can see them; people on your trips never do. Saved Spots, the places you keep from reels and posts, are stored the same way.</p>
+
+  <h2>Planning with AI</h2>
+  <p>Some features use an AI model (Claude, by Anthropic) through our server. What is sent:</p>
+  <ul>
+    <li><b>Plan a trip:</b> where and when, your trip style and food choices, and for each traveller only "adult" or "child" with an age, a stroller, access needs and allergies. No names, no account details.</li>
+    <li><b>Reading a booking</b> (a screenshot or a forwarded email): your iPhone reads it first. Only if that isn't enough, the text it pulled out is sent to be sorted into fields; never the image or the file.</li>
+    <li><b>Saving places from a reel or post:</b> the caption or the words on your screenshot; never the video.</li>
+    <li><b>A guide's summary:</b> the stops of the guide you are publishing.</li>
+  </ul>
+  <p>Anthropic receives this text without your name or account. We don't keep these requests; we only count how many you make, to keep within limits.</p>
+
+  <h2>Bookings by email</h2>
+  <p>You can forward booking confirmations to trip@wayvelle.com. We accept mail only from addresses you have added and confirmed in the app; anything else is not kept. A forwarded email, with its attachments, is kept in your private inbox in WayVelle, which only you can see, until you remove it or delete your account. Our mail passes through Google Workspace and Cloudflare on its way to us, and confirmation emails to you are sent with Resend.</p>
+
+  <h2>Guides and tips are public</h2>
+  <p>If you publish a trip as a guide, anyone can read it in the app and on this website: its title, summary, days, stops, times and notes, and how you got around if you leave that on. Your name is shown only if you switch "Show my name" on. Where you stayed appears only as a town unless you choose to include it. Never included: bookings, tickets, passengers, travellers, costs, attachments and who was on the trip. A tip you leave on someone's guide is public in the same way. You can unpublish a guide or remove a tip at any time.</p>
+  <p>If you love, report or block, we store that with your account so it works: reports reach us, and a blocked person's guides and tips are hidden from you.</p>
 
   <h2>The Vault</h2>
   <p>Documents in your Vault (passport, insurance, visas) are encrypted on your iPhone with AES-256 before they are uploaded. The key is kept only on your devices, synced by iCloud Keychain. Our servers store only encrypted data, including encrypted file names. If our servers were ever broken into, these files could not be opened, not by the attacker and not by us. If no device of yours has the key any more, the files can't be recovered by anyone.</p>
@@ -37,23 +58,38 @@
 
   <h2>Location</h2>
   <p>With your permission, WayVelle uses your location on your iPhone to show where you are on a travel day, to plan the way to your next stop, and to guide hikes. Your location is not stored on our servers, except where you choose to save it in a plan (for example, "Left the trail at" a stop), or while you share it.</p>
+  <p>To show what is around you (places nearby, events, weather, your next train or bus), the app sends your position or your saved place to our server, which asks the provider without saying who you are. We don't keep it.</p>
   <p><strong>Sharing your location.</strong> When your group splits up on a trip day, you can choose to share where you are with the people on that trip, until a time you pick, between 30 minutes and 10 hours from then. While you share, your iPhone sends your current position about every 30 seconds while you move, also when WayVelle is in the background (iOS shows the location indicator). We keep only your latest position, never a history. Only members of that trip can see it. It stops at the time you chose or as soon as you tap Stop, and your position is then deleted from our servers within minutes. Deleting your account deletes it at once.</p>
 
   <h2>Alerts</h2>
-  <p>If you allow notifications, we store your device's push token and, on travel days, the trains or buses and flights you're following, so we can alert you about delays, platform and gate changes. These records are deleted within days.</p>
+  <p>If you allow notifications, we store your device's push token and, on travel days, the trains or buses and flights you're following, so we can alert you about delays, platform and gate changes. These records are deleted within days. If you set up a commute, we use your station and usual times to warn you about late or cancelled trains. "Leave by" reminders are set on your iPhone and never reach us.</p>
+
+  <h2>Purchases and the free trip</h2>
+  <p>WayVelle is free to use. Where paid plans are offered, Apple handles the payment; we receive Apple's record of the purchase, never your card. To give each iPhone one free trip, we ask Apple's DeviceCheck whether that iPhone has already had one; it tells us yes or no and nothing else about the device. Your Support ID in Settings is a short code you can read to us when you ask for help.</p>
+
+  <h2>Hotel links</h2>
+  <p>"Book a hotel" opens Booking.com or Expedia with the town, your dates and how many adults and children (with ages) filled in, nothing else about you. We may earn a commission if you book. Their own privacy policies apply on their sites.</p>
 
   <h2>Services we use</h2>
   <ul>
     <li><b>Supabase</b> (Frankfurt) hosts accounts, trips and files.</li>
-    <li><b>Apple</b>: Sign in with Apple, push notifications, maps and weather.</li>
-    <li><b>Timetables and weather</b>: opentransportdata.swiss (journey searches between stops), MeteoSwiss, swisstopo (hiking trails). These receive places and times, never your identity.</li>
+    <li><b>Apple</b>: Sign in with Apple, push notifications, weather, purchases and DeviceCheck.</li>
+    <li><b>Google</b>: the map in the app is Google Maps, which receives what any Google map does (the area you look at and basic device information) under Google's privacy policy. Place search, ratings and reviews, and public-transport routes outside Switzerland are asked through our server, with places and times but not your identity.</li>
+    <li><b>Anthropic</b>: the AI features above.</li>
+    <li><b>Timetables</b>: opentransportdata.swiss, and local transit agencies where you commute (for example GO Transit and the TTC). These receive stops and times, never your identity.</li>
+    <li><b>Weather</b>: MeteoSwiss, Apple Weather and Environment Canada.</li>
+    <li><b>Places and trails</b>: OpenStreetMap services, swisstopo, Wikipedia, Wikidata and Wikivoyage.</li>
     <li><b>Flight status</b>: our server asks a flight-data provider about flight numbers and dates only.</li>
-    <li><b>Photos</b> of places come from Wikimedia Commons.</li>
-    <li>Google Maps or Waze are opened only when you choose them for directions; their own privacy policies apply there.</li>
+    <li><b>Photos</b> of places come from Wikimedia Commons and Unsplash, and airline logos from an image service. Photos and map images load straight from these providers, which see your internet address as any website would.</li>
+    <li><b>Email</b>: Google Workspace, Cloudflare and Resend, for bookings by email.</li>
+    <li>Apple Maps, Google Maps or Waze open only when you choose them for directions; their own privacy policies apply there.</li>
   </ul>
 
+  <h2>This website</h2>
+  <p>wayvelle.com is hosted on GitHub Pages, which sees your internet address as any web host does. We use no analytics and no advertising cookies. For now the home page loads one script from Travelpayouts, an affiliate partner, so they can confirm the site is ours; it will be removed once that is done. Trip, invite and guide pages read only the trip copy or guide whose link you opened.</p>
+
   <h2>Deleting your data</h2>
-  <p>In WayVelle, go to Settings → your name → <b>Delete Account</b>. This permanently removes your account, the trips you own (for everyone on them), your Vault and your alert records. Trips other people own stay with them. Signing out instead removes your trips from that iPhone but keeps them in your account.</p>
+  <p>In WayVelle, go to Settings → your name → <b>Delete Account</b>. This permanently removes your account, the trips you own (for everyone on them), your Vault, your saved places and settings, your forwarded emails, the guides and tips you published, and your alert records. Trips other people own stay with them. Signing out instead removes your trips from that iPhone but keeps them in your account.</p>
 
   <h2>Children</h2>
   <p>WayVelle isn't directed at children under 13. You can add children as travellers on a trip (name, age and needs you enter); they don't have accounts.</p>
