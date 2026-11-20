@@ -10,6 +10,19 @@
 <meta property="og:image" content="https://wayvelle.com/icon.png">
 <link rel="icon" href="/icon.png">
 <link rel="stylesheet" href="/style.css">
+<style>
+  /* guide pages (/g/…) */
+  #guide { text-align: left; }
+  #gsummary { color: #dfe5f5; }
+  #guide a { color: #9db8ff; }
+  .small { font-size: 14px; }
+  .day h2 { font-size: 18px; margin: 0 0 6px; }
+  .stop { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding: 12px 0; border-top: 1px solid #ffffff1a; }
+  .day .stop:first-child { border-top: 0; }
+  .stop .time { font-variant-numeric: tabular-nums; color: var(--soft); font-weight: 600; }
+  .stop .name { font-weight: 600; }
+  .stop .note { color: #dfe5f5; font-size: 15px; margin-top: 4px; }
+</style>
 </head>
 <body>
 <main>
@@ -19,6 +32,16 @@
   <div class="card" id="trip" hidden>
     <h2 id="name"></h2>
     <div class="soft" id="facts"></div>
+  </div>
+  <div id="guide" hidden>
+    <p class="soft" id="gfacts"></p>
+    <p id="gsummary"></p>
+    <div id="gdays"></div>
+    <div class="card">
+      <strong>Make it your trip</strong>
+      <p class="soft" style="margin:6px 0 0">Get WayVelle <span>(coming soon to the App Store)</span>, open <b>Guides</b>, find this guide by its name and tap <b>Use this plan</b>. It becomes your own trip, on your dates.</p>
+    </div>
+    <p class="soft small">A traveller's own plan, shared on WayVelle. Check times and opening hours before you go. <a href="/terms">Terms</a> · Something wrong with this guide? <a id="greport" href="mailto:support@wayvelle.com">Report it</a></p>
   </div>
   <div class="card" id="how" hidden>
     <strong>Don't have WayVelle yet?</strong>
@@ -39,8 +62,56 @@
 const SUPABASE = "https://byqfwvaxpihmlcdczbld.supabase.co";
 const PUBLISHABLE_KEY = "sb_publishable_HwIXnOBmQHWwiF4TeatiOw_xuYOFAMt";
 const m = location.pathname.match(/^\/([tj])\/([0-9A-Za-z-]{8,12})\/?$/);
+const g = location.pathname.match(/^\/g\/([0-9a-f]{10})\/?$/);
 const $ = (id) => document.getElementById(id);
-if (!m) {
+// Shared data is put on the page as text only (textContent), never as HTML.
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const WAYS = { train: "Train", bus: "Bus", tram: "Tram", metro: "Subway", subway: "Subway", boat: "Boat", cable: "Cable car", walk: "Walk", car: "Drive", bike: "Bike", flight: "Flight" };
+function showGuide(slug) {
+  document.title = "A trip guide · WayVelle";
+  $("title").textContent = "A trip guide";
+  fetch(SUPABASE + "/rest/v1/guides?slug=eq." + slug + "&select=title,author,place,days,car_free,loves,summary,payload", {
+    headers: { apikey: PUBLISHABLE_KEY },
+  }).then((r) => r.ok ? r.json() : null).then((rows) => {
+    const t = Array.isArray(rows) ? rows[0] : null;
+    if (!t) { $("lead").textContent = "This guide isn't available any more."; return; }
+    const title = String(t.title ?? "A trip");
+    document.title = title + " · WayVelle";
+    $("title").textContent = title;
+    $("lead").textContent = "by " + (t.author ? String(t.author) : "a WayVelle traveller");
+    const days = Number(t.days) || 0, loves = Number(t.loves) || 0;
+    $("gfacts").textContent = [t.place && String(t.place), days + (days === 1 ? " day" : " days"), t.car_free ? "car-free" : "",
+      loves ? loves + (loves === 1 ? " love" : " loves") : ""].filter(Boolean).join(" · ");
+    if (t.summary) $("gsummary").textContent = String(t.summary); else $("gsummary").hidden = true;
+    const plans = (t.payload && Array.isArray(t.payload.plans) ? t.payload.plans : []).filter((p) => p && p.day > 0 && p.day <= 60 && p.title);
+    plans.sort((a, b) => a.day - b.day || String(a.time ?? "99").localeCompare(String(b.time ?? "99")));
+    let day = 0, list = null;
+    for (const p of plans) {
+      if (p.day !== day) {
+        day = p.day;
+        const card = el("div", "card day");
+        card.append(el("h2", null, "Day " + day));
+        list = el("div"); card.append(list); $("gdays").append(card);
+      }
+      const row = el("div", "stop");
+      row.append(el("div", "time", p.time ? String(p.time) : ""));
+      const body = el("div");
+      body.append(el("div", "name", String(p.title)));
+      const place = p.placeName && String(p.placeName) !== String(p.title).replace(/^\S+ /, "") && String(p.placeName) !== String(p.title) ? String(p.placeName) : "";
+      const way = Array.isArray(p.way) ? p.way.map((w) => w && [WAYS[w.mode] || "", w.line ? String(w.line) : ""].filter(Boolean).join(" ")).filter(Boolean).join(" → ") : "";
+      const ride = way ? way + (Number(p.wayMin) ? " · about " + Number(p.wayMin) + " min" : "") : "";
+      if (place) body.append(el("div", "soft small", place));
+      if (ride) body.append(el("div", "soft small", "Getting there: " + ride));
+      if (p.notes) body.append(el("div", "note", String(p.notes)));
+      row.append(body); list.append(row);
+    }
+    $("greport").href = "mailto:support@wayvelle.com?subject=" + encodeURIComponent("Report guide " + slug);
+    $("guide").hidden = false;
+  }).catch(() => { $("lead").textContent = "Couldn't load this guide. Check your connection and try again."; });
+}
+if (g) {
+  showGuide(g[1]);
+} else if (!m) {
   $("missing").hidden = false;
 } else {
   const kind = m[1], code = m[2].toUpperCase().replace(/[^0-9A-Z]/g, "");
