@@ -5,7 +5,8 @@
         "appIDs": ["22D8HUABQ7.com.milapdesai.travelplanner"],
         "components": [
           { "/": "/t/*", "comment": "a copy of a trip" },
-          { "/": "/j/*", "comment": "an invite to join a trip" }
+          { "/": "/j/*", "comment": "an invite to join a trip" },
+          { "/": "/g/*", "comment": "a published guide" }
         ]
       }
     ]
