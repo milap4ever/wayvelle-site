@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WayVelle · Plan a trip together, day by day</title>
-<meta name="description" content="WayVelle turns your trip into a live plan: the next train between stops, every flight on one board, weather for the hike and a place to sleep each night, shared with everyone travelling.">
+<title>WayVelle · Coming soon</title>
+<meta name="description" content="WayVelle is coming soon.">
+<meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="WayVelle">
-<meta property="og:description" content="Plan a trip together, day by day.">
+<meta property="og:description" content="Coming soon.">
 <meta property="og:image" content="https://wayvelle.com/icon.png">
 <link rel="icon" href="/icon.png">
 <!-- Travelpayouts (affiliate partner): site verification -->
@@ -19,88 +20,31 @@
       document.head.appendChild(script);
   })();
 </script>
+<!-- The full homepage is in git: tag full-homepage-2026-11-20 -->
 <style>
-  :root { --bg: #0e1a3a; --card: #16264f; --ink: #fff; --soft: #b9c4e4; --blue: #2f62e6; --line: #ffffff1f; }
+  :root { --bg: #0b1020; --top: #1b2550; --ink: #fff; --soft: #b9c4e4; --amber: #ffb454; --rose: #ff6b8b; }
   * { box-sizing: border-box; }
+  html, body { height: 100%; }
   body { margin: 0; font: 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--ink);
-    background: linear-gradient(180deg, #1c2f63, var(--bg) 640px) var(--bg); }
-  a { color: inherit; }
-  .w { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-  nav { display: flex; align-items: center; gap: 10px; padding: 18px 0; }
-  nav img { width: 34px; height: 34px; border-radius: 9px; }
-  nav b { font-size: 19px; } nav .sp { flex: 1; }
-  nav a { color: var(--soft); text-decoration: none; font-size: 15px; margin-left: 20px; }
-  section { padding: 48px 0; }
-  .hero { display: flex; gap: 48px; align-items: center; padding-top: 32px; }
-  .hero .txt { flex: 1; }
-  h1 { font-size: 50px; line-height: 1.06; letter-spacing: -1.2px; margin: 0 0 16px; }
-  .lead { color: var(--soft); font-size: 19px; margin: 0 0 24px; max-width: 540px; }
-  .badge { display: inline-block; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 18px; font-weight: 600; }
-  .small { color: var(--soft); font-size: 14px; margin-top: 12px; }
-  h2 { font-size: 32px; letter-spacing: -0.5px; margin: 0 0 6px; }
-  .sub { color: var(--soft); margin: 0 0 24px; }
-  .grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
-  .card { background: var(--card); border-radius: 20px; padding: 22px; }
-  .card .ico { font-size: 24px; } .card h3 { margin: 8px 0 4px; font-size: 18px; } .card p { margin: 0; color: var(--soft); font-size: 15px; }
-  .hotel { display: flex; gap: 32px; align-items: center; background: var(--card); border-radius: 24px; padding: 32px; }
-  .hotel .txt { flex: 1; }
-  .pill { display: inline-block; font-size: 14px; font-weight: 700; padding: 9px 16px; border-radius: 99px; margin: 14px 8px 0 0; }
-  .pill.b { background: #003580; color: #fff; } .pill.e { background: #ffc72c; color: #1a1f4d; }
-  .disc { font-size: 13px; color: var(--soft); margin-top: 14px; }
-  footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--soft); font-size: 14px; }
-  footer .w { display: flex; gap: 22px; flex-wrap: wrap; }
-  .phone { width: 270px; border-radius: 40px; background: #000; padding: 8px; box-shadow: 0 24px 60px #0009; flex: none; }
-  .phone img { display: block; width: 100%; height: auto; border-radius: 32px; }
-  @media (max-width: 800px) {
-    .hero, .hotel { flex-direction: column; align-items: flex-start; } .hero .phone, .hotel .phone { align-self: center; }
-    .grid { grid-template-columns: 1fr; } h1 { font-size: 36px; } nav a:not(.keep) { display: none; } .hotel { padding: 22px; }
-  }
+    background: linear-gradient(180deg, var(--top), var(--bg) 70%) var(--bg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; text-align: center; }
+  main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  img { width: 104px; height: 104px; border-radius: 24px; box-shadow: 0 10px 34px #0008; }
+  h1 { font-size: 40px; letter-spacing: -0.8px; margin: 22px 0 4px; }
+  p { color: var(--soft); margin: 0; max-width: 420px; }
+  .soon { display: inline-block; margin-top: 22px; padding: 8px 18px; border-radius: 999px; font-weight: 600; color: #1a1020;
+    background: linear-gradient(90deg, var(--amber), var(--rose)); }
+  footer { font-size: 14px; color: var(--soft); }
+  footer a { color: var(--soft); margin: 0 8px; }
 </style>
 </head>
 <body>
-<div class="w">
-  <nav><img src="/icon.png" alt=""><b>WayVelle</b><span class="sp"></span>
-    <a href="#features">Features</a><a href="#hotels">Hotels</a><a href="/privacy.html">Privacy</a><a class="keep" href="mailto:support@wayvelle.com">Contact</a></nav>
-
-  <section class="hero">
-    <div class="txt">
-      <h1>Plan a trip together, day by day.</h1>
-      <p class="lead">WayVelle turns your trip into a live plan: the next train between stops, every flight on one board, weather for the hike and a place to sleep each night. Shared with everyone travelling.</p>
-      <span class="badge">Coming soon to the App Store</span>
-      <div class="small">For iPhone. Android is planned.</div>
-    </div>
-    <div class="phone"><img src="/shot-home.jpg" width="600" height="1300" alt="WayVelle home: the next trip with its flight home, and Forward your bookings"></div>
-  </section>
-
-  <section id="features">
-    <h2>Everything a trip day needs</h2>
-    <p class="sub">Built for families and friends travelling together.</p>
-    <div class="grid">
-      <div class="card"><div class="ico">🚆</div><h3>Live connections</h3><p>The next train, bus or boat between your plans, with platforms and delays.</p></div>
-      <div class="card"><div class="ico">✈️</div><h3>Flight board</h3><p>Every flight of the trip with gates, delays and boarding passes for Apple Wallet.</p></div>
-      <div class="card"><div class="ico">🌤️</div><h3>Weather and hikes</h3><p>Forecasts for each stop, trail maps, lifts up and the way back down.</p></div>
-      <div class="card"><div class="ico">📧</div><h3>Forward your bookings</h3><p>Send confirmation emails to trip@wayvelle.com and add them to the plan in a tap.</p></div>
-      <div class="card"><div class="ico">👨‍👩‍👧</div><h3>Made for groups</h3><p>One shared plan; each traveller keeps their own tickets private.</p></div>
-      <div class="card"><div class="ico">💶</div><h3>Split costs</h3><p>Track who paid for what and settle up at the end of the trip.</p></div>
-    </div>
-  </section>
-
-  <section id="hotels">
-    <div class="hotel">
-      <div class="txt">
-        <h2>A place to sleep, every night</h2>
-        <p class="sub" style="margin:0">When a night in your plan has no stay yet, WayVelle shows "Book a hotel in Luzern". One tap opens the search on Booking.com or Expedia with your dates, adults and children's ages already filled in. You book and pay with them directly.</p>
-        <span class="pill b">Booking.com</span><span class="pill e">Expedia</span>
-        <div class="disc">WayVelle may earn a commission when you book through these links, at no extra cost to you.</div>
-      </div>
-      <div class="phone"><img src="/shot-day.jpg" width="600" height="1300" alt="A day in WayVelle: weather, check-out time, and Book a hotel in Grindelwald with Booking.com and Expedia buttons"></div>
-    </div>
-  </section>
-</div>
-<footer><div class="w">
-  <span>© 2026 WayVelle</span><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Use</a><a href="mailto:support@wayvelle.com">support@wayvelle.com</a>
-  <span>Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors</span>
-  <span>Photos in the app screenshots via <a href="https://commons.wikimedia.org">Wikimedia Commons</a>: chil (CC BY-SA 3.0); Abexus, Maria Feofilova, Martin Thurnherr, Jeremy Blatti, Lorenz Poffet (CC BY-SA 4.0); Alexis Lours (CC BY 4.0)</span>
-</div></footer>
+<main>
+  <img src="/icon.png" alt="">
+  <h1>WayVelle</h1>
+  <p>Plan a trip together, day by day.</p>
+  <span class="soon">Coming soon</span>
+</main>
+<footer><a href="/privacy.html">Privacy</a>·<a href="/terms.html">Terms</a>·<a href="mailto:support@wayvelle.com">Contact</a></footer>
 </body>
 </html>
